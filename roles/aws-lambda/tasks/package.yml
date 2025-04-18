@@ -1,0 +1,17 @@
+- block:
+  - set_fact:
+      zip_package: "{{ lambda.key }}_{{ lambda.value.version }}.zip"
+  - name: "Querying {{ zip_package }} is in S3"
+    command: >
+      aws s3api list-objects
+        --output text
+        --bucket {{ lambda_artifacts_bucket }}
+        --query "Contents[?contains(Key,'{{ zip_package|basename }}')].Key|[-1:]|[0]"
+    register: aws_s3_query
+  - debug:
+      var: aws_s3_query
+  rescue:
+    - debug:
+        var: lambda
+    - debug:
+        var: zip_package

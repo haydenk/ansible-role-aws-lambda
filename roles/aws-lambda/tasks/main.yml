@@ -1,0 +1,10 @@
+- debug:
+    var: lambda_artifacts_bucket
+- debug:
+    var: lambdas
+- name: Begin Packaging Lambdas
+  include_tasks: package.yml
+  with_dict: "{{ lambdas }}"
+  loop_control:
+    loop_var: lambda
+  

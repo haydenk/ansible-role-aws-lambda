@@ -1,0 +1,15 @@
+project_dir: "{{ playbook_dir | dirname }}"
+
+lambdas:
+  identify_file_type:
+    version: "1.0.2"
+    src: "{{ project_dir }}/matrix-pricing/identify-file-type"
+  load_data_from_s3:
+    version: "1.0.10"
+    src: "{{ project_dir }}/matrix-pricing/load-from-s3-to-level5"
+  update_matrix_supplier_status:
+    version: "1.0.2"
+    src: "{{ project_dir }}/matrix-pricing/update-matrix-supplier-status"
+  log_matrix_supplier_error:
+    version: "1.0.2"
+    src: "{{ project_dir }}/matrix-pricing/log-matrix-supplier-error"

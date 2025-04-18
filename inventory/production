@@ -1,0 +1,6 @@
+[all]
+localhost ansible_connection=local ansible_python_interpreter=python env=development
+
+[all:vars]
+aws_region=us-east-1
+lambda_artifacts_bucket=lambda-code-artifacts-bd31928
